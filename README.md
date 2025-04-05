@@ -1,35 +1,85 @@
-# E-Commerce-Web-Application-on-AWS
-E-Commerce Web Application on AWS
+# 🚀 E-Commerce Web Application on AWS
 
-📌 Business Use Case:
-🔹 A fully functional e-commerce platform that allows users to:
-✅ Browse and search for products.
-✅ Add products to the cart and place orders.
-✅ Process payments securely.
-✅ Track order status.
+## 📌 Project Overview
 
-🔹 The platform should be:
-✔ Highly Available (Multi-AZ architecture).
-✔ Scalable (Auto Scaling & Load Balancing).
-✔ Secure (IAM, WAF, GuardDuty).
-✔ Cost-Optimized (Spot Instances, Serverless components).
+This is a production-ready **e-commerce web application** deployed on **AWS Cloud** using **Terraform** as the Infrastructure as Code (IaC) tool. The architecture is designed to be **highly available**, **secure**, **scalable**, and **cost-efficient** – aligning with modern industry practices.
 
-📌 AWS Architecture Breakdown:
-✅ Frontend – Hosted on S3 + CloudFront for global content delivery.
-✅ Backend APIs – Deployed on ECS Fargate (Node.js / Express.js).
-✅ Database – Amazon RDS (PostgreSQL/MySQL) with Multi-AZ Failover.
-✅ Caching – Amazon ElastiCache (Redis) for session storage.
-✅ Authentication – AWS Cognito for user sign-in and identity management.
-✅ Storage – Amazon S3 for product images, invoices, and backups.
-✅ Security – AWS WAF, GuardDuty, IAM Roles, Security Groups.
-✅ CI/CD – GitHub Actions + AWS CodePipeline for automated deployments.
-✅ Monitoring – CloudWatch, Datadog, Prometheus, X-Ray for logging and alerts.
+---
 
-📌 User Flow Diagram:
-1️⃣ User visits the website (CloudFront → S3-hosted frontend).
-2️⃣ User logs in via Cognito (IAM-protected authentication).
-3️⃣ User browses products (API Gateway → ECS backend → RDS).
-4️⃣ User adds items to cart & places an order (ECS → RDS → SNS for notifications).
-5️⃣ Payment processing (Third-party API like Stripe/PayPal).
-6️⃣ Order status updates & tracking (SQS + Lambda + DynamoDB for event-driven updates).
+## 🎯 Business Use Case
 
+This platform enables customers to:
+
+- ✅ Browse and search for products
+- ✅ Add products to cart and place orders
+- ✅ Make secure payments
+- ✅ Track order status and history
+
+---
+
+## 🧱 Architecture Summary
+
+### ✅ Core Components
+
+| Layer         | AWS Services Used                                      |
+|---------------|--------------------------------------------------------|
+| Frontend      | S3 (static files), CloudFront (CDN), Route 53          |
+| Backend APIs  | ECS Fargate (containerized APIs), API Gateway          |
+| Database      | RDS (PostgreSQL/MySQL), DynamoDB (for sessions/events)|
+| Auth          | AWS Cognito                                            |
+| Caching       | ElastiCache (Redis)                                    |
+| Messaging     | SQS, SNS                                               |
+| File Storage  | Amazon S3                                              |
+| Security      | IAM, WAF, GuardDuty, Security Groups, KMS             |
+| CI/CD         | GitHub Actions, AWS CodePipeline, Terraform            |
+| Monitoring    | CloudWatch, X-Ray, Prometheus, Datadog                 |
+
+---
+
+## 🛠️ Features
+
+- 🌐 Multi-AZ High Availability
+- 🔐 End-to-End Security with IAM, WAF, Cognito
+- ⚙️ Auto Scaling for ECS Services
+- 🚀 Continuous Integration & Delivery
+- 📦 Event-driven order processing with SQS + Lambda
+- 💸 Cost Optimization with Spot Instances and Serverless tools
+
+---
+
+## 🔄 User Flow
+
+1. User accesses the web app via CloudFront (static files from S3)
+2. Authenticates using AWS Cognito
+3. Browses products (via ECS API Gateway → Backend containers → RDS)
+4. Adds products to cart and places order
+5. Order status is processed via SQS/Lambda and stored in DynamoDB
+6. Notifications are sent using SNS
+7. Payments are handled via 3rd-party gateway (Stripe/PayPal)
+
+---
+
+## 🧾 Deployment Stack
+
+- **Terraform** – IaC to provision AWS resources
+- **Docker + ECS Fargate** – Containerized deployment
+- **GitHub Actions** – CI/CD pipelines
+- **AWS CodePipeline + CodeBuild** – Automated infra + app deployments
+
+---
+
+## 📁 Folder Structure
+
+```bash
+aws-ecommerce/
+├── terraform/
+│   ├── vpc/
+│   ├── ecs/
+│   ├── rds/
+│   └── cloudfront/
+├── docker/
+│   ├── backend/
+│   └── frontend/
+├── ci-cd/
+│   └── github-actions/
+└── README.md
